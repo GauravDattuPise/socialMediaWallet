@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors")
 const dotenv = require("dotenv")
+const path = require("path")
 const route = require("./routes/route");
 
 dotenv.config();
@@ -16,6 +17,16 @@ mongoose.connect(process.env.DB)
 .catch((err)=>{console.log("error in db connection", err)});
 
 app.use("/", route);
+
+app.use(express.static(path.join(__dirname, "./client/build")));
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"),
+    function (err) {
+      res.status(500).send(err);
+    }
+  )
+});
  
 // running application on server
 app.listen(process.env.PORT, ()=>{
