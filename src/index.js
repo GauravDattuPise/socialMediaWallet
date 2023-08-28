@@ -10,12 +10,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// connecting to db
 mongoose.connect(process.env.DB)
 .then(()=>{console.log("db connected")})
 .catch((err)=>{console.log("error in db connection", err)});
 
 app.use("/", route);
-
+ 
+// running application on server
 app.listen(process.env.PORT, ()=>{
     console.log("server is running on port", 5000)
 })

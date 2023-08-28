@@ -18,10 +18,8 @@ Welcome to the Social Media Platform Wallet Dashboard project! This is a simple 
 
 ## Technologies Used
 
-- Frontend: ReactJS
-  Libraries : React Router, Axios, Material-UI, react-hot-toast
+- Frontend: ReactJS [ React Router , Axios, Material-UI, react-hot-toast ]
 
-- Backend: NodeJS
-- Libraries: Express,Mongoose,jsonwebtoken,bcrypt, dotenv
+- Backend: NodeJS [ Express, Mongoose, bcrypt, dotenv, cors, concurrently ]
 
 - Database : mongoDB Compass

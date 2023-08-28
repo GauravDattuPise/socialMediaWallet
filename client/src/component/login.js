@@ -14,6 +14,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './login.css';
 
+
+// LOGIN 
+
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
@@ -30,6 +33,7 @@ const Login = () => {
         }));
     }
 
+    // login function
     async function handleLogin(e) {
         e.preventDefault();
 
@@ -46,9 +50,9 @@ const Login = () => {
 
                 localStorage.setItem("wallet", res.data.user.wallet)
                 const user = JSON.stringify(res.data.user);
-                
+
                 localStorage.setItem('user', user);
-               
+
                 navigate('/home');
             } else {
                 toast.error(res.data.message);
@@ -63,6 +67,7 @@ const Login = () => {
     return (
         <div className="form">
             <form onSubmit={handleLogin} className="login-box">
+
                 <Typography
                     className="login-title"
                     variant="h2"
@@ -72,6 +77,7 @@ const Login = () => {
                     Login
                 </Typography>
 
+                {/* email input */}
                 <TextField
                     variant="outlined"
                     className="text-field"
@@ -84,6 +90,7 @@ const Login = () => {
                     required
                 />
 
+                {/* password input */}
                 <TextField
                     variant="outlined"
                     className="password-field"
@@ -115,6 +122,7 @@ const Login = () => {
                     }}
                 />
 
+                {/* login button */}
                 <Button
                     sx={{ marginTop: '20px' }}
                     type="submit"
