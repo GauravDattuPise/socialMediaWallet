@@ -30,7 +30,7 @@ app.get("*", function (req, res) {
   )
 });
 
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 5001
 
 // running application on server
 app.listen(port, ()=>{
