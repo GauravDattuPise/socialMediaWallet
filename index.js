@@ -4,7 +4,7 @@ const cors = require("cors")
 const dotenv = require("dotenv")
 const morgan = require("morgan")
 const path = require("path")
-const route = require("./routes/route");
+const route = require("./src/routes/route");
 
 dotenv.config();
 
@@ -20,19 +20,21 @@ mongoose.connect(process.env.DB)
 
 app.use("/", route);
 
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"),
+  res.sendFile(path.join(__dirname, "./client/build/index.html"),
     function (err) {
       res.status(500).send(err);
     }
   )
 });
- 
+
+const port = process.env.PORT || 8000
+
 // running application on server
-app.listen(process.env.PORT, ()=>{
-    console.log("server is running on port", 5000)
+app.listen(port, ()=>{
+    console.log("server is running on port", port);
 })
 
  
